@@ -20,7 +20,11 @@ def log_error(error_msg):
 
     logger = logging.Client().logger("telephonie-etl-programmes")
 
-    logger.log_text(error_msg, resource=resource, severity="ERROR")
+    logger.log_struct(
+        {"message": error_msg, "tag": ERROR_TAG},
+        resource=resource,
+        severity="ERROR",
+    )
 
 
 log_error("test1")
